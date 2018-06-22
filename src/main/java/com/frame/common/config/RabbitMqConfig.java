@@ -1,4 +1,4 @@
-package com.dev.common.config;
+package com.frame.common.config;
 
 
 import org.springframework.amqp.core.Queue;

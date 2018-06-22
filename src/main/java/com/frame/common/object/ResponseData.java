@@ -1,4 +1,4 @@
-package com.dev.common.object;
+package com.frame.common.object;
 
 
 
