@@ -1,4 +1,4 @@
-package com.frame.common.config.datasource;
+package com.frame.common.datasource;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;

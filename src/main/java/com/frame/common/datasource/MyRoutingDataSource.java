@@ -1,4 +1,4 @@
-package com.frame.common.config.datasource;
+package com.frame.common.datasource;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 import org.springframework.lang.Nullable;

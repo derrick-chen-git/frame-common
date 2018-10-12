@@ -1,4 +1,4 @@
-package com.frame.common.config.datasource;
+package com.frame.common.datasource;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -9,20 +9,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataSourceAop {
 
-    @Pointcut("!@annotation(com.frame.common.config.annotation.Master) " +
-            "&& (execution(* com..*.*Mapper.select*(..)) " +
-            "|| execution(* com..*.*Mapper.get*(..)))")
+    @Pointcut("!@annotation(com.frame.common.annotation.Master) " +
+            "&& (execution(* com..*.service..*.select*(..)) " +
+            "|| execution(* com..*.service..*.get*(..)))")
     public void readPointcut() {
 
     }
 
-    @Pointcut("@annotation(com.frame.common.config.annotation.Master) " +
-            "|| execution(* com..*.*Mapper.insert*(..)) " +
-            "|| execution(* com..*.*Mapper.add*(..)) " +
-            "|| execution(* com..*.*Mapper.update*(..)) " +
-            "|| execution(* com..*.*Mapper.edit*(..)) " +
-            "|| execution(* com..*.*Mapper.delete*(..)) " +
-            "|| execution(* com..*.*Mapper.remove*(..))")
+    @Pointcut("@annotation(com.frame.common.annotation.Master) " +
+            "|| execution(* com..*.service..*.insert*(..)) " +
+            "|| execution(* com..*.service..*.add*(..)) " +
+            "|| execution(* com..*.service..*.update*(..)) " +
+            "|| execution(* com..*.service..*.edit*(..)) " +
+            "|| execution(* com..*.service..*.delete*(..)) " +
+            "|| execution(* com..*.service..*.remove*(..))")
     public void writePointcut() {
 
     }
