@@ -1,4 +1,4 @@
-package com.frame.common.object;
+package com.frame.common.base;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;

@@ -1,4 +1,4 @@
-package com.frame.common.config;
+package com.frame.common.datasource;
 
 import com.baomidou.mybatisplus.entity.DefaultMetaObjectHandler;
 import com.baomidou.mybatisplus.enums.DBType;

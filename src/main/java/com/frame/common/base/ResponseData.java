@@ -1,6 +1,7 @@
-package com.frame.common.object;
+package com.frame.common.base;
 
 
+import com.frame.common.base.BaseObject;
 
 /**
  * Created by Administrator on 2018/6/19.

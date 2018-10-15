@@ -9,14 +9,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataSourceAop {
 
-    @Pointcut("!@annotation(com.frame.common.annotation.Master) " +
+    @Pointcut("!@annotation(com.frame.common.datasource.Master) " +
             "&& (execution(* com..*.service..*.select*(..)) " +
             "|| execution(* com..*.service..*.get*(..)))")
     public void readPointcut() {
 
     }
 
-    @Pointcut("@annotation(com.frame.common.annotation.Master) " +
+    @Pointcut("@annotation(com.frame.common.datasource.Master) " +
             "|| execution(* com..*.service..*.insert*(..)) " +
             "|| execution(* com..*.service..*.add*(..)) " +
             "|| execution(* com..*.service..*.update*(..)) " +
@@ -29,12 +29,12 @@ public class DataSourceAop {
 
     @Before("readPointcut()")
     public void read() {
-        DBContextHolder.slave();
+        MyRoutingDataSource.slave();
     }
 
     @Before("writePointcut()")
     public void write() {
-        DBContextHolder.master();
+        MyRoutingDataSource.master();
     }
 
 
