@@ -1,18 +1,12 @@
 package com.frame.common.rabbitmq;
 
-
 import lombok.Data;
-import org.springframework.amqp.core.AmqpTemplate;
-import org.springframework.amqp.core.Queue;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 /**
@@ -20,13 +14,16 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Component
-@PropertySource("classpath:/application.yml")
-@ConfigurationProperties(prefix="spring.rabbitmq")
+@Slf4j
+/*@PropertySource("classpath:/application.yml")
+@ConfigurationProperties(prefix="spring.rabbitmq")*/
 public class RabbitMqConfig {
-    private String host;
+/*    private String host;
     private int port;
     private String username;
     private String password;
+    private boolean publisherReturns;
+    private boolean publishConfirm;
 
     @Bean
     public ConnectionFactory connectionFactory(){
@@ -35,8 +32,10 @@ public class RabbitMqConfig {
         cachingConnectionFactory.setPort(port);
         cachingConnectionFactory.setUsername(username);
         cachingConnectionFactory.setPassword(password);
+        cachingConnectionFactory.setPublisherReturns(publisherReturns);
+        cachingConnectionFactory.setPublisherConfirms(publishConfirm);
         return cachingConnectionFactory;
-    }
+    }*/
 
     @Bean
     public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory){
@@ -46,6 +45,19 @@ public class RabbitMqConfig {
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory){
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
+        rabbitTemplate.setMandatory(true);
+        rabbitTemplate.setReturnCallback((message, replyCode, replyText, exchange, routingKey) -> {
+                         String correlationId = message.getMessageProperties().getCorrelationIdString();
+                        log.debug("消息：{} 发送失败, 应答码：{} 原因：{} 交换机: {}  路由键: {}", correlationId, replyCode, replyText, exchange, routingKey);
+                   });
+               // 消息确认, yml需要配置 publisher-confirms: true
+                rabbitTemplate.setConfirmCallback((correlationData, ack, cause) -> {
+                         if (ack) {
+                                 log.debug("消息发送到exchange成功,id: {}");
+                             } else {
+                                 log.debug("消息发送到exchange失败,原因: {}", cause);
+                            }
+                    });
         //rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
         return rabbitTemplate;
     }

@@ -1,7 +1,7 @@
 package com.frame.common.rabbitmq;
 
-import com.frame.common.utils.JacksonUtils;
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,13 +14,20 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class RabbitMqUtils {
+/*    @Autowired
+    private ConnectionFactory connectionFactory;
+
+
+    public void convertAndSend(String exchange,String routingKey,String msg) throws IOException, TimeoutException {
+     MessageSender messageSender = new MQAccessBuilder(connectionFactory).buildMessageSender(exchange,routingKey);
+     messageSender.send(msg);
+    }*/
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    public void convertAndSend(String exchange,String routingKey,String msg){
-
-        log.info(" rabbitmq send msg exchange:{}-->routingKey:{}-->msg:{}",exchange,routingKey,msg);
-        rabbitTemplate.convertAndSend(exchange,routingKey, msg);
+    public void send(String exchange,String routingKey,String msg){
+        log.info("发送++++++++++++++++++++++++++++++++++++++++++++"+msg);
+        rabbitTemplate.convertAndSend(exchange,routingKey,msg);
     }
 
 
