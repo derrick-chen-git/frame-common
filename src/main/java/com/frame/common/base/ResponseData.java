@@ -4,7 +4,7 @@ package com.frame.common.base;
 /**
  * Created by Administrator on 2018/6/19.
  */
-public class ResponseData<T>  extends BaseObject {
+public  class ResponseData<T>  extends BaseObject {
     private int code;
     private String msg;
     private T data;
@@ -36,5 +36,15 @@ public class ResponseData<T>  extends BaseObject {
         this.code = code;
         this.msg = msg;
         this.data = data;
+    }
+    public ResponseData(int code,String msg){
+        this.code = code;
+        this.msg = msg;
+    }
+    public static ResponseData success(){
+        return new ResponseData<>(0,"success");
+    }
+    public static ResponseData error(String msg){
+        return new ResponseData<>(-1,msg);
     }
 }

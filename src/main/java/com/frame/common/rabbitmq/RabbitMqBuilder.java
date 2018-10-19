@@ -1,6 +1,7 @@
 package com.frame.common.rabbitmq;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,31 +10,34 @@ import org.yaml.snakeyaml.Yaml;
 
 import javax.annotation.PostConstruct;
 
-import java.lang.reflect.Constructor;
 
 
 
 @Component
+@Slf4j
 public  class  RabbitMqBuilder {
     @Autowired
     private RabbitAdmin rabbitAdmin;
     @PostConstruct
     public void init() {
-        Yaml yaml = new Yaml();
-        QueueConfig queueConfig = yaml.loadAs(this
+        try {
+            Yaml yaml = new Yaml();
+            QueueConfig queueConfig = yaml.loadAs(this
                     .getClass().getClassLoader().getResourceAsStream("rabbitmq.yml"), QueueConfig.class);
-        if(null != queueConfig && null != queueConfig.getQueues() && queueConfig.getQueues().size() > 0) {
-            for(MyQueue queue : queueConfig.getQueues()) {
-                String exchangeName = queue.getExchangeName();
-                String exchangeType = queue.getExchangeType();
-                String queueName = queue.getQueueName();
-                String routingKey = queue.getRoutingKey();
-                boolean durable = queue.isDurable();
-                boolean autoDelete = queue.isAutoDelete();
-                this.initRabbitMqQueue(exchangeName, queueName, exchangeType, routingKey, durable, autoDelete);
+            if (null != queueConfig && null != queueConfig.getQueues() && queueConfig.getQueues().size() > 0) {
+                for (MyQueue queue : queueConfig.getQueues()) {
+                    String exchangeName = queue.getExchangeName();
+                    String exchangeType = queue.getExchangeType();
+                    String queueName = queue.getQueueName();
+                    String routingKey = queue.getRoutingKey();
+                    boolean durable = queue.isDurable();
+                    boolean autoDelete = queue.isAutoDelete();
+                    this.initRabbitMqQueue(exchangeName, queueName, exchangeType, routingKey, durable, autoDelete);
+                }
             }
+        }catch(Exception e){
+            log.error("rabbitmq init error msg:{}",e.getMessage());
         }
-
     }
 
         public void initRabbitMqQueue(String exchangeName,String queueName, String type, String routingKey,boolean durable, boolean autoDelete){
