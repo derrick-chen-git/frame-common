@@ -2,7 +2,7 @@ package com.frame.common.base;
 
 
 /**
- * Created by Administrator on 2018/6/19.
+ * Created by derrick on 2018/6/19.
  */
 public  class ResponseData<T>  extends BaseObject {
     private int code;
