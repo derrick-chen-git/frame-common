@@ -2,21 +2,21 @@ package com.frame.common.rabbitmq;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.core.*;
+/*import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;*/
 import org.springframework.stereotype.Component;
-import org.yaml.snakeyaml.Yaml;
+/*import org.yaml.snakeyaml.Yaml;
 
-import javax.annotation.PostConstruct;
-
-
+import javax.annotation.PostConstruct;*/
 
 
-@Component
-@Slf4j
+
+
+/*@Component
+@Slf4j*/
 public  class  RabbitMqBuilder {
-    @Autowired
+  /*  @Autowired
     private RabbitAdmin rabbitAdmin;
     @PostConstruct
     public void init() {
@@ -73,12 +73,12 @@ public  class  RabbitMqBuilder {
            }else if(ExchangeTypes.HEADERS.equals(exchangeType)){
                exchange = new HeadersExchange(exchangeName,durable,autoDelete);
            }
-            /*Class<?> clazz = Class.forName(exchangeType);
+            *//*Class<?> clazz = Class.forName(exchangeType);
             Constructor<?> constructor = clazz.getConstructor(String.class, boolean.class, boolean.class);
-            exchange = (AbstractExchange)constructor.newInstance(exchangeName,durable,autoDelete);*/
+            exchange = (AbstractExchange)constructor.newInstance(exchangeName,durable,autoDelete);*//*
         } catch (Exception e) {
             e.printStackTrace();
         }
         return exchange;
-         }
+         }*/
 }

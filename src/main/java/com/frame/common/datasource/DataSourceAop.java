@@ -1,4 +1,4 @@
-package com.frame.common.datasource;
+/*package com.frame.common.datasource;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -38,9 +38,9 @@ public class DataSourceAop {
     }
 
 
-    /**
+    *//**
      * 另一种写法：if...else...  判断哪些需要读从数据库，其余的走主数据库
-     */
+     *//*
 //    @Before("execution(* com.cjs.example.service.impl.*.*(..))")
 //    public void before(JoinPoint jp) {
 //        String methodName = jp.getSignature().getName();
@@ -51,4 +51,4 @@ public class DataSourceAop {
 //            DBContextHolder.master();
 //        }
 //    }
-}
+}*/

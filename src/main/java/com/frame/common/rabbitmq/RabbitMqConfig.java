@@ -1,20 +1,20 @@
 package com.frame.common.rabbitmq;
 
-import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+/*import lombok.Data;
+import lombok.extern.slf4j.Slf4j;*/
+/*import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Bean;*/
 import org.springframework.stereotype.Component;
 
 /**
  * Created by lemonade on 2018/6/20.
  */
-@Data
+/*@Data
 @Component
-@Slf4j
+@Slf4j*/
 /*@PropertySource("classpath:/application.yml")
 @ConfigurationProperties(prefix="spring.rabbitmq")*/
 public class RabbitMqConfig {
@@ -37,7 +37,9 @@ public class RabbitMqConfig {
         return cachingConnectionFactory;
     }*/
 
-    @Bean
+//改用spring cloud stream 集成，此方式暂停使用
+
+  /*  @Bean
     public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory){
         return new RabbitAdmin(connectionFactory);
     }
@@ -59,5 +61,5 @@ public class RabbitMqConfig {
                     });
         //rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
         return rabbitTemplate;
-    }
+    }*/
 }

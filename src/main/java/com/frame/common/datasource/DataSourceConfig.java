@@ -1,3 +1,4 @@
+/*
 package com.frame.common.datasource;
 
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,12 +11,14 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
+*/
 /**
  * 关于数据源配置，参考SpringBoot官方文档第79章《Data Access》
  * 79. Data Access
  * 79.1 Configure a Custom DataSource
  * 79.2 Configure Two DataSources
- */
+ *//*
+
 
 @Configuration
 public class DataSourceConfig {
@@ -52,4 +55,4 @@ public class DataSourceConfig {
         return myRoutingDataSource;
     }
 
-}
+}*/
