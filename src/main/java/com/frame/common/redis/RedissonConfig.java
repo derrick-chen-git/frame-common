@@ -1,3 +1,4 @@
+/*
 package com.frame.common.redis;
 
 import lombok.Data;
@@ -27,3 +28,4 @@ public class RedissonConfig {
         return redisson;
     }
 }
+*/

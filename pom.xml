@@ -16,6 +16,115 @@
         <version>1.0.0</version>
         <relativePath>../frame-parent/pom.xml</relativePath>
     </parent>
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!--mybatis Plus-->
+        <!-- <dependency>
+             <groupId>com.baomidou</groupId>
+             <artifactId>mybatis-plus-boot-starter</artifactId>
+             <version>3.0.5</version>
+         </dependency>-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>3.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <!--<dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
+            <scope>test</scope>
+        </dependency>-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!--  cache -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <!--  redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!--rabbitMq  集成方式修改成spring cloud stream，此暂时不用++++++-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+        <!--jdbc-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-joda</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-parameter-names</artifactId>
+        </dependency>
+        <!-- 分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+        <!-- alibaba的druid数据库连接池 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.23</version>
+        </dependency>
+       <!-- <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>3.6.5</version>
+        </dependency>-->
+        <!--分表分库和读写分离-->
+        <dependency>
+            <groupId>io.shardingjdbc</groupId>
+            <artifactId>sharding-jdbc-core</artifactId>
+            <version>2.0.3</version>
+        </dependency>
+
+    </dependencies>
     <build>
     <plugins>
         <plugin>
