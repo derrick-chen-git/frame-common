@@ -18,7 +18,11 @@
         <relativePath>../frame-parent/pom.xml</relativePath>
     </parent>
     <dependencies>
-
+        <dependency>
+            <groupId>com.frame.starter</groupId>
+            <artifactId>frame-redis-spring-boot-starter</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <build>
     <plugins>

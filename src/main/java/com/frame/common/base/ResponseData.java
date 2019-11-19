@@ -1,19 +1,28 @@
 package com.frame.common.base;
 
 
+import com.frame.common.enums.ResultCodeEnum;
+import lombok.Data;
+
 /**
  * Created by derrick on 2018/6/19.
  */
+@Data
 public  class ResponseData<T>  extends BaseObject {
-    private int code;
+    private String code;
     private String msg;
     private T data;
 
-    public int getCode() {
+    public ResponseData(String code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
+
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
@@ -32,19 +41,19 @@ public  class ResponseData<T>  extends BaseObject {
     public void setData(T data) {
         this.data = data;
     }
-    public ResponseData(int code,String msg,T data){
+
+    public static ResponseData success(){
+        return new ResponseData<>(ResultCodeEnum.SUCCESS.getCode(),ResultCodeEnum.SUCCESS.getMsg());
+    }
+
+    public ResponseData(String code, String msg, T data) {
         this.code = code;
         this.msg = msg;
         this.data = data;
     }
-    public ResponseData(int code,String msg){
-        this.code = code;
-        this.msg = msg;
-    }
-    public static ResponseData success(){
-        return new ResponseData<>(0,"success");
-    }
+
     public static ResponseData error(String msg){
-        return new ResponseData<>(-1,msg);
+        return new ResponseData<>(ResultCodeEnum.ERROR.getCode(),ResultCodeEnum.ERROR.getMsg());
     }
+    
 }

@@ -1,6 +1,7 @@
 package com.frame.common.handler;
 
 import com.frame.common.base.ResponseData;
+import com.frame.common.enums.ResultCodeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,6 +17,6 @@ public class CommonExceptionHandler {
     @ResponseBody
     public ResponseData exceptionHandler(Exception ex){
         log.error("request exception msg:{}",ex.getMessage());
-        return new ResponseData(500,ex.getMessage());
+        return new ResponseData(ResultCodeEnum.ERROR.getCode(),ex.getMessage());
     }
 }
