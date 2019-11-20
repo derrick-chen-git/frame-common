@@ -2,10 +2,9 @@ package com.frame.common.exception;
 
 
 /**
- * @author xiaoqian.wen
+ * @author derrick
  * @version v1.0
- * @desc 财务统一异常类
- * @date 2018/9/13 20:07
+ * @desc 统一异常类
  */
 public class BusinessException extends Exception {
     
