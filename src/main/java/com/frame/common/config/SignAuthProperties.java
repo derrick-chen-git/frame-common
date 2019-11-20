@@ -1,4 +1,4 @@
-package com.frame.common.aop;
+package com.frame.common.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -19,6 +19,6 @@ public class SignAuthProperties {
     /**
      * welab私钥
      */
-    private String welabPrivateKey;
+    private String privateKey;
     
 }

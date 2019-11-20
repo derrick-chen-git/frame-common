@@ -1,0 +1,8 @@
+com/frame/common/base/ResponseData.class
+com/frame/common/config/MassageConverConfiguration.class
+com/frame/common/base/BaseObject.class
+com/frame/common/utils/SnowflakeIdWorker.class
+com/frame/common/utils/LongIdGenerator.class
+com/frame/common/handler/CommonExceptionHandler.class
+com/frame/common/utils/JacksonUtils$1.class
+com/frame/common/utils/JacksonUtils.class

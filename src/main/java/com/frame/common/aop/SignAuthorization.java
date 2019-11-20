@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import com.frame.common.base.ResponseData;
+import com.frame.common.config.SignAuthProperties;
 import com.frame.common.enums.ResultCodeEnum;
 import com.frame.common.utils.SignatureHelper;
 import lombok.extern.slf4j.Slf4j;
@@ -71,13 +72,13 @@ public class SignAuthorization {
      * 权限验证
      */
     public boolean authValidate(HttpServletRequest request, HttpServletResponse response) {
-        log.info("第三方合作商验签开始。。。。。");
+        log.info("验签开始。。。。。");
         String timestamp = request.getHeader("X-Timestamp");
         String mobile = request.getHeader("X-User-Mobile");
         String partnerName = request.getHeader("X-Partner-Name");
         String signData = request.getHeader("X-Sign-Data");
         
-        log.info("第三方请求信息：X-Timestamp:{},X-User-Mobile:{},X-Partner-Name:{},X-Sign-Data:{}",
+        log.info("请求信息：X-Timestamp:{},X-User-Mobile:{},X-Partner-Name:{},X-Sign-Data:{}",
             timestamp, mobile, partnerName, signData);
         
         ResponseData responseVo = new ResponseData(ResultCodeEnum.ERROR.getCode(), ResultCodeEnum.ERROR.getMsg());
@@ -101,10 +102,10 @@ public class SignAuthorization {
                 return false;
             } else {
                 SignatureHelper signatureHelper = SignatureHelper
-                    .getInstance(signAuthProperties.getThirdPublicKey(), signAuthProperties.getWelabPrivateKey());
+                    .getInstance(signAuthProperties.getThirdPublicKey(), signAuthProperties.getPrivateKey());
                 boolean verify = signatureHelper.verify(partnerName + "&" + mobile + "&" + timestamp, signData);
                 if (!verify) {
-                    log.error("第三方合作商验签失败");
+                    log.error("验签失败");
                     responseVo.setCode(ResultCodeEnum.SIGN_ERROR.getCode());
                     responseVo.setMsg(ResultCodeEnum.SIGN_ERROR.getMsg());
                     responseResult(response, responseVo);
@@ -114,11 +115,11 @@ public class SignAuthorization {
         } catch (Exception ex) {
             responseVo.setCode(ResultCodeEnum.SIGN_ERROR.getCode());
             responseVo.setMsg(ResultCodeEnum.SIGN_ERROR.getMsg());
-            log.error("第三方合作商验签失败,{}", ex);
+            log.error("验签失败,{}", ex);
             responseResult(response, responseVo);
             return false;
         }
-        log.info("第三方合作商验签结束。。。。。");
+        log.info("验签结束。。。。。");
         
         return true;
     }
@@ -127,7 +128,7 @@ public class SignAuthorization {
     public void responseResult(HttpServletResponse response, ResponseData result) {
         try {
             String jsonString = JSON.toJSONString(result);
-            log.info("返回给第三方结果：{}", jsonString);
+            log.info("返回结果：{}", jsonString);
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter printWriter = response.getWriter();
             printWriter.print(jsonString);

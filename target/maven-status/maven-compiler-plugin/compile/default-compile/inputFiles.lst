@@ -1,0 +1,7 @@
+/Users/lemonade/code/frame/frame-common/src/main/java/com/frame/common/base/ResponseData.java
+/Users/lemonade/code/frame/frame-common/src/main/java/com/frame/common/base/BaseObject.java
+/Users/lemonade/code/frame/frame-common/src/main/java/com/frame/common/utils/LongIdGenerator.java
+/Users/lemonade/code/frame/frame-common/src/main/java/com/frame/common/config/MassageConverConfiguration.java
+/Users/lemonade/code/frame/frame-common/src/main/java/com/frame/common/utils/JacksonUtils.java
+/Users/lemonade/code/frame/frame-common/src/main/java/com/frame/common/utils/SnowflakeIdWorker.java
+/Users/lemonade/code/frame/frame-common/src/main/java/com/frame/common/handler/CommonExceptionHandler.java
